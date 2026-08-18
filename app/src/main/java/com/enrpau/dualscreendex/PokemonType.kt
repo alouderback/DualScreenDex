@@ -22,7 +22,15 @@ enum class PokemonType(val displayName: String, val colorHex: Int) {
     STEEL("Steel", "#B7B7CE".toColorInt()),
     DARK("Dark", "#705746".toColorInt()),
     FAIRY("Fairy", "#D685AD".toColorInt()),
+    AETHER("Aether", "#DEDEC5".toColorInt()),
     UNKNOWN("???", Color.LTGRAY);
+
+    /**
+     * Badge label colour for this type. Most type colours are dark enough for white
+     * text, but Aether's pale gold is not, so pick by luminance instead of assuming.
+     */
+    val onColorHex: Int
+        get() = contrastTextColorFor(colorHex)
 
     companion object {
         fun fromString(value: String?): PokemonType {
@@ -31,4 +39,20 @@ enum class PokemonType(val displayName: String, val colorHex: Int) {
                 ?: UNKNOWN
         }
     }
+}
+
+/**
+ * Picks a label colour that stays readable on [background], using WCAG relative
+ * luminance. Pale type colours (Aether, Electric, Ice) get dark text; everything
+ * else keeps the white the app has always used.
+ */
+fun contrastTextColorFor(background: Int): Int {
+    fun lin(channel: Int): Double {
+        val c = channel / 255.0
+        return if (c <= 0.03928) c / 12.92 else Math.pow((c + 0.055) / 1.055, 2.4)
+    }
+    val luminance = 0.2126 * lin(Color.red(background)) +
+            0.7152 * lin(Color.green(background)) +
+            0.0722 * lin(Color.blue(background))
+    return if (luminance > 0.6) "#1A1A1A".toColorInt() else Color.WHITE
 }

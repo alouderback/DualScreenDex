@@ -20,11 +20,11 @@ object GenerationHelper {
         // gen 1-5
         if (mechanics != RomProfile.Mechanics.GEN_6_PLUS) {
 
-            if (t1 == PokemonType.FAIRY) {
+            if (t1 == PokemonType.FAIRY || t1 == PokemonType.AETHER) {
                 t1 = PokemonType.NORMAL
             }
 
-            if (t2 == PokemonType.FAIRY) {
+            if (t2 == PokemonType.FAIRY || t2 == PokemonType.AETHER) {
                 t2 = PokemonType.UNKNOWN
             }
         }

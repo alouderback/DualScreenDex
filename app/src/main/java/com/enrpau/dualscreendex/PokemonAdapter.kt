@@ -87,7 +87,7 @@ class PokemonAdapter(
         val tv = TextView(container.context)
         tv.text = type.displayName.take(3).uppercase()
         tv.textSize = 10f
-        tv.setTextColor(android.graphics.Color.WHITE)
+        tv.setTextColor(type.onColorHex)
         tv.setPadding(12, 4, 12, 4)
 
         val bg = GradientDrawable()

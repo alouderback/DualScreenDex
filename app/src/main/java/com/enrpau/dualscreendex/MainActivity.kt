@@ -136,7 +136,7 @@ class MainActivity : AppCompatActivity() {
 
         viewModel.battleTabColor.observeForeverSafe { color ->
             cardBattleTab.setCardBackgroundColor(color)
-            tvBattleTabText.setTextColor(Color.WHITE)
+            tvBattleTabText.setTextColor(contrastTextColorFor(color))
         }
 
         viewModel.weaknessList.observeForeverSafe { list ->
@@ -372,10 +372,12 @@ class MainActivity : AppCompatActivity() {
         val view = layoutInflater.inflate(R.layout.badge_weakness, null, false)
         view.findViewById<TextView>(R.id.tvBadgeType).apply {
             text = type.displayName
+            setTextColor(type.onColorHex)
             setBackgroundColor(type.colorHex)
         }
         view.findViewById<TextView>(R.id.tvBadgeMult).apply {
             text = "× ${if(mult == 0.5) "½" else if(mult == 0.25) "¼" else if(mult == 0.0) "0" else mult.toInt().toString()}"
+            setTextColor(type.onColorHex)
             setBackgroundColor(type.colorHex)
         }
         return view
@@ -384,7 +386,7 @@ class MainActivity : AppCompatActivity() {
     private fun addFullWidthTypeBadge(container: LinearLayout, type: PokemonType) {
         val tv = TextView(this).apply {
             text = type.displayName.uppercase()
-            setTextColor(Color.WHITE)
+            setTextColor(type.onColorHex)
             setTypeface(null, android.graphics.Typeface.BOLD)
             gravity = android.view.Gravity.CENTER
             textSize = 14f

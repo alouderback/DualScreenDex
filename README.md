@@ -4,6 +4,34 @@
 
 ---
 
+## Odyssey fork
+
+This fork adds first-class support for **Pokémon Odyssey**, the Made in Abyss /
+Etrian Odyssey crossover hack, including its replacement type **Aether**.
+
+* **New `Aether` type.** Odyssey drops Fairy and adds Aether. Aether has its own
+  matchups. It is weak to Poison and Dark, and resists Flying, Ground, Fire, Water
+  and Aether. Fairy shares none of those resistances.
+* **Built-in "Pokémon Odyssey" profile.** Select it from the profile list. No CSV
+  import needed.
+* **All 409 dex entries**, including the six alternate forms (Aether Blaziken,
+  Kecleon, Plusle, Minun, Mawile, and Galarian Farfetch'd), wired to the form toggle.
+* **Odyssey's full type chart**, which rebalances vanilla beyond Aether. Poison now
+  hits Water for 2x, Dark resists Ice and Fighting, and Dragon lost its Fairy immunity.
+* **Readable badges on pale types.** Badge text now picks black or white by
+  luminance, so Aether (`#DEDEC5`), Electric and Ice stay legible.
+
+Data is generated from [epieffe/talrega-dex](https://github.com/epieffe/talrega-dex).
+
+### Using Odyssey on the stock app instead
+
+If you would rather not build this fork, `csv-profiles/odyssey-stock-app/` holds the
+same data remapped onto the unused Fairy slot. Import the three files as a custom
+profile on upstream v2.0 and every multiplier is correct; the badge just reads
+"Fairy" instead of "Aether".
+
+---
+
 ## New in v2.0
 
 * **Modular Architecture:** Complete internal refactor replacing the previous monolithic system with a cleaner, more scalable modular structure.

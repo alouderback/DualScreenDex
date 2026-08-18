@@ -59,6 +59,15 @@ object RomManager {
             matchupFilePath = "dex/vanilla_matchup.csv",
             baseMechanics = RomProfile.Mechanics.GEN_6_PLUS
         ),
+        RomProfile(
+            id = "odyssey",
+            name = "Pokémon Odyssey",
+            isBuiltIn = true,
+            dexFilePath = "dex/odyssey_pokedex.csv",
+            regionalFilePath = "dex/odyssey_regional.csv",
+            matchupFilePath = "dex/odyssey_matchup.csv",
+            baseMechanics = RomProfile.Mechanics.GEN_6_PLUS
+        ),
     )
 
     private var customProfiles: MutableList<RomProfile> = mutableListOf()

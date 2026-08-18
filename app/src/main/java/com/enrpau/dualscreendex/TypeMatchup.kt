@@ -54,6 +54,7 @@ object TypeMatchup {
     }
 
     private fun isTypeMissingInGen1(type: PokemonType): Boolean {
-        return type == PokemonType.DARK || type == PokemonType.STEEL || type == PokemonType.FAIRY
+        return type == PokemonType.DARK || type == PokemonType.STEEL ||
+                type == PokemonType.FAIRY || type == PokemonType.AETHER
     }
 }
